@@ -1,0 +1,76 @@
+.booklist img{
+    height: 170px;
+}
+.booklist .bookname{
+    text-align: center;
+}
+.booklist .thumbnail{
+    min-height: 340px;
+}
+
+.clear{
+    clear:both;
+}
+.navbar a{
+    color:#fff;
+}
+.navbar-nav a:hover{  
+     background-color: #febf04 !important; 
+} 
+.navbar a:visited{
+    
+}
+.navbar a:hover{
+    background: #32d1ac;
+}
+
+.main{
+    min-height: 400px;
+    margin:20px;
+}
+footer{
+	width: 220px;
+	margin: 20px auto;
+	font-size: 15px;
+}
+.intro{
+	margin-top: 50px;
+	text-align: center;
+	line-height: 60px;
+    min-height: 200px;
+}
+.header{	/*头部 渐变色背景*/
+	color: #fff;
+	padding: 20px;
+    width: 100%;
+    /*min-height: 350px;*/
+    background: #32d1ac;
+    background: -moz-linear-gradient(-45deg, #32d1ac 0%, #4a90e2 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #32d1ac), color-stop(100%, #4a90e2));
+    background: -webkit-linear-gradient(-45deg, #32d1ac 0%, #4a90e2 100%);
+    background: -o-linear-gradient(-45deg, #32d1ac 0%, #4a90e2 100%);
+    background: -ms-linear-gradient(-45deg, #32d1ac 0%, #4a90e2 100%);
+    background: linear-gradient(135deg, #32d1ac 0%, #4a90e2 100%);
+    /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#32d1ac', endColorstr='#4a90e2', GradientType=1);*/
+}
+.blank_block{	/*头部 渐变色背景*/
+	padding: 20px;
+    width: 100%;
+    min-height: 450px;
+}
+.color_block{
+	color: #fff;
+	padding: 20px;
+    width: 100%;
+    min-height: 450px;
+    background: #32d1ac;
+    background: -moz-linear-gradient(-45deg, #32d1ac 0%, #4a90e2 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #32d1ac), color-stop(100%, #4a90e2));
+    background: -webkit-linear-gradient(-45deg, #32d1ac 0%, #4a90e2 100%);
+    background: -o-linear-gradient(-45deg, #32d1ac 0%, #4a90e2 100%);
+    background: -ms-linear-gradient(-45deg, #32d1ac 0%, #4a90e2 100%);
+    background: linear-gradient(135deg, #32d1ac 0%, #4a90e2 100%);
+}
+.foot{
+	min-height: 120px;
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/css/style.css' />
+  </head>
+  <body>
+    
+    <% for(user in userlist){ %>
+    <h1>username:<%= userlist[user].username %></h1>
+    <h1>email:<%= userlist[user].email %></h1>
+    <%	}	%>
+
+    <form action="/addUser" method="post">
+    	<input type="text" name="username" placeholder="username">
+		<input type="text" name="email" placeholder="email">
+    	<input type="submit">
+    </form>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+<ul class="nav nav-pills nav-stacked">    <!--标签列表-->
+  <%
+    //var tags,books,user;
+    if(tags==""){ 
+   %>
+        <li role="presentation"><h3>暂无分类</h3></li>
+  <%
+    }else{
+    for(n in tags){
+    if(currentTag == tags[n].tag) {
+  %>
+    <li class="active" role="presentation"><a href="/books?tag=<%=tags[n].tag %>"><%=tags[n].tag %></a></li>
+  <% }else{ %>
+    <li role="presentation"><a href="/books?tag=<%=tags[n].tag %>"><%=tags[n].tag %></a></li>
+  <%  }}}  %>
+</ul>

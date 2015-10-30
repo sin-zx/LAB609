@@ -1,0 +1,107 @@
+<% include header.ejs %>
+<!-- 书籍管理部分 -->
+<div class="container-fluid main">
+  <div class="row-fluid">
+    <div class="col-md-2">  <!-- 图书分类 -->
+      <ul class="nav nav-pills nav-stacked">
+        <%
+          //var tags,books,user;
+          if(tags==""){ 
+         %>
+              <li role="presentation"><h3>暂无分类</h3></li>
+        <%
+          }else{
+          for(n in tags){
+          if(currentTag == tags[n].tag) {
+        %>
+          <li class="active" role="presentation"><a href="/books?tag=<%=tags[n].tag %>"><%=tags[n].tag %></a></li>
+        <% }else{ %>
+          <li role="presentation"><a href="/books?tag=<%=tags[n].tag %>"><%=tags[n].tag %></a></li>
+        <%  }}}  %>
+      </ul>
+    </div>
+    <div class="col-md-10 booklist"> <!-- 图书列表 -->
+      <div class="book_info">
+      <%  if(user)  { %>
+        <a href="/books/add" class="btn btn-success">添加图书</a>
+        <a href="#" class="btn btn-info">书籍管理</a>
+      <% }else { %>
+        <h2>书籍列表</h2>
+      <% } %>
+      <hr>
+      </div>
+        <% 
+          if(books)
+          {
+            for(n in books)
+            { 
+            if(books[n].status == 0)  { status="在库"; }
+            else  { status="已出借"; }
+        %>
+
+          <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+              <img src="<%= books[n].imgUrl %>" alt="...">
+              <div class="caption">
+                <h4 class="bookname"><%= books[n].bookname %></h4 class="bookname">
+                <p>作者： <%= books[n].author %></p>
+                <p>状态:  <%= status %></p>
+                <p><a data-toggle="modal" data-target="#bookModal">详细信息</a></p>
+              </div>
+            </div>
+          </div>
+
+        <%  }} %>
+
+      <div class="clear"></div>
+      
+      <div class="container-fluid">     <!--分页-->
+        <nav>
+          <ul class="pager">
+          <%
+          var currentTag; 
+          if (isFirstPage) { 
+          %>
+            <li class="disabled"><a href="#">Previous</a></li>
+          <%  }else{  %>
+            <li><a href="/books?page=<%=page-1%>">Previous</a></li>
+          <%  }
+          if (isLastPage) {
+           %>
+            <li class="disabled"><a href="#">Next</a></li>
+          <% }else{ %>
+
+            <li><a href="/books?page=<%=page+1%>&tag=<%=currentTag %>">Next</a></li>
+          <% } %>
+          </ul>
+        </nav>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- Modal图书详情模态框 -->
+<div class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel2">图书信息</h4>
+      </div>
+      <div class="modal-body">
+          <h1>出版社：</h1>
+          <h1>ISBN: 9787111135104</h1>
+          <h1>译者：</h1>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal end -->
+
+
+<% include footer.ejs %>

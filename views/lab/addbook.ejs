@@ -1,0 +1,85 @@
+<% include header.ejs %>
+<!-- 添加书籍 -->
+<div class="container-fluid main">
+  <div class="row-fluid">
+    <div class="col-md-2">  <!-- 图书分类 -->
+      <h3>已有分类</h3>
+      <hr>
+      <ul class="nav nav-pills nav-stacked">
+        <li role="presentation"><a href="#">语言代码</a></li>
+        <li role="presentation"><a href="#">数字电子</a></li>
+        <li role="presentation"><a href="#">算法数据</a></li>
+        <li role="presentation"><a href="#">经典文学</a></li>
+      </ul>
+    </div>
+    <div class="col-md-10"> <!-- 图书列表 -->
+      <div class="book_info">
+        <%  if(success){  %>
+        <div class="alert alert-success alert-dismissible" role="alert" id="loginFail">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div><%=success %></div>
+        </div>
+        <%  
+        }
+        if(error){ 
+        %>
+        <div class="alert alert-danger alert-dismissible" role="alert" id="loginFail">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div><%=error %></div> 
+        </div>
+        <%  }  %>
+        <h2>添加书籍</h2>
+
+        <hr>
+      </div>
+
+<!--表单提交错误警告-->
+<div class="alert alert-danger alert-dismissible" role="alert" id="addFail" hidden> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div id="addbook_warning"></div> 
+</div>
+
+<form id="addForm" action="/books/add" method="post">
+  <div class="form-group">
+    <label for="bookname">书名</label>
+    <input type="text" class="form-control" id="bookname" name="bookname" placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="author">作者</label>
+    <input type="text" class="form-control" name="author" placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="imgUrl">封面图片</label>
+    <div class="input-group">
+      <input type="text" class="form-control" name="imgUrl" placeholder="输入图片链接">
+      <span class="input-group-btn">
+          <a href="http://book.douban.com/" class="btn btn-default" target="_blank">去豆瓣获取</a>
+      </span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="intro">书籍介绍</label>
+    <textarea name="intro" class="form-control" rows="3" placeholder=""></textarea>
+  </div>
+  <div class="form-group">
+    <label for="tag">分类</label>
+    <input type="text" class="form-control" name="tag" id="tag" placeholder="简短标签">
+  </div>
+  <button class="btn btn-default" id="addbtn" onclick="return checkForm();">提交</button>
+</form>
+
+    </div>
+  </div>
+</div>
+
+      
+
+      
+
+<% include footer.ejs %>

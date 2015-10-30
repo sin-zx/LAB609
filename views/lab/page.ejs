@@ -1,0 +1,21 @@
+<div class="container-fluid">     <!--分页-->
+  <nav>
+    <ul class="pager">
+    <%
+    var currentTag; 
+    if (isFirstPage) { 
+    %>
+      <li class="disabled"><a href="#">Previous</a></li>
+    <%  }else{  %>
+      <li><a href="/books?page=<%=page-1%>">Previous</a></li>
+    <%  }
+    if (isLastPage) {
+     %>
+      <li class="disabled"><a href="#">Next</a></li>
+    <% }else{ %>
+
+      <li><a href="/books?page=<%=page+1%>&tag=<%=currentTag %>">Next</a></li>
+    <% } %>
+    </ul>
+  </nav>
+</div>

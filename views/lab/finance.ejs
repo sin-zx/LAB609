@@ -1,0 +1,76 @@
+<% include header.ejs %>
+
+
+
+<div class="container-fluid main">
+  <div class="row-fluid">
+        <%  if(error){ %>
+        <div class="alert alert-danger alert-dismissible" role="alert" id="loginFail">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div><%=error %></div> 
+        </div>
+        <%  }  %>
+    <div class="col-md-10">
+           
+          <table class="table">
+            <thead>
+              <tr>
+                <th>标题</th>
+                <th>编号</th>
+                <th>链接</th>
+                <th>日期</th>
+                <th>pdf地址</th>
+              </tr>
+            </thead>
+            <tbody>
+    <%
+    var datas;  //注意这里要先定义datas不然会报错
+    if(datas){  
+      for(n in datas){
+    %>
+            
+              <tr>
+                <td><%=datas[n].title %></td>
+                <td><%=datas[n].number %></td>
+                <td><a href=<%=datas[n].url %> target="_blank"><%=datas[n].url %></a></td>
+                <td><%=datas[n].date %></td>
+                <td><a href=<%=datas[n].pdfurl %> target="_blank"><%=datas[n].pdfurl %></a></td>
+              </tr>
+            
+    <%  }}  %>
+            </tbody>
+          </table>
+
+  <div class="container-fluid">     <!--分页-->
+  <nav>
+    <ul class="pager">
+    <%  if (isFirstPage) {  %>
+      <li class="disabled"><a href="#">Previous</a></li>
+    <%  }else{  %>
+      <li><a href="/finance?page=<%=page-1%>">Previous</a></li>
+    <%  }
+    if (isLastPage) {
+     %>
+      <li class="disabled"><a href="#">Next</a></li>
+    <% }else{ %>
+
+      <li><a href="/finance?page=<%=page+1%>">Next</a></li>
+    <% } %>
+    </ul>
+  </nav>
+</div>   
+
+    </div>
+    <div class="col-md-2">
+      
+    </div>
+    
+  </div>
+</div>
+      
+
+      
+
+<% include footer.ejs %>
