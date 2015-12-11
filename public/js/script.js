@@ -4,9 +4,21 @@
  *	by zixin 2015.10
  */
 
-
-
 $(document).ready(function(){
+
+
+    $(".lendBtn").click(function () { 
+      $(this).next("div").css('display', 'block');    //选择下一个同胞元素 即被隐藏的输入框
+    });  
+
+    $(".lendsubBtn").click(function () { 
+      var lendname = $(this).prev("form").children(".lendname").val();
+      if(lendname==null || lendname==""){
+            alert("借阅人不能为空!");
+      }else{
+        $(this).prev("form").submit();
+      }
+    }); 
 
 	// 登陆框调用ajax代码：
         $("#password").keydown(function (event) {

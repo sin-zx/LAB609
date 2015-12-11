@@ -4,16 +4,25 @@ var router = express.Router();
 var crypto = require('crypto');
 var User = require('../models/user.js');
 
+function checkLogin(req, res, next) {
+    if (!req.session.user) {
+		req.flash('error', 'unlogined'); 
+		console.log(req.flash('error').toString());
+		return res.redirect('/');
+    }
+    next();
+  }
 
+router.get('/test', function (req, res) {
+
+});
 router.get('/', function (req, res) {
 	res.render('lab/main', { 
 		title: 'LAB609',
 		user: req.session.user,
-		intro:1
-	    /*
+		intro:1,
 	    success: req.flash('success').toString(),
 	    error: req.flash('error').toString()
-	    */
 	});
 });
 
@@ -31,7 +40,7 @@ router.get('/finance', function (req, res) {
 			if(e){
 				req.flash('error', '查找失败!请重试');
 			}
-			console.log("hello::"+docs.length);
+
 		    res.render('lab/finance', {
 		    	page : page,
 		        title: '金融数据',
@@ -146,36 +155,6 @@ router.get('/userlist', function(req, res) {
         res.render('userlist', {
             "userlist" : docs
         });
-    });
-});
-
-//向数据库添加数据
-router.post('/addUser', function (req, res){
-	// Set our internal DB variable
-    var db = req.db;
-    // Get our form values. These rely on the "name" attributes
-    var userName = req.body.username;
-    var Email = req.body.email;
- 
-    // Set our collection
-    var collection = db.get('test');
- 
-    // Submit to the DB
-    collection.insert(
-    {
-        "username" : userName,
-        "email" : Email
-    }, function (err, doc) {
-        if (err) {
-            // If it failed, return error
-            res.send("数据插入失败");
-        }
-        else {
-            // If it worked, set the header so the address bar doesn't still say /adduser
-            res.location("userlist");
-            // And forward to success page
-            res.redirect("userlist");
-        }
     });
 });
 

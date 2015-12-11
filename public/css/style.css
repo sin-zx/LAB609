@@ -1,3 +1,4 @@
+
 .booklist img{
     height: 170px;
 }
@@ -5,7 +6,11 @@
     text-align: center;
 }
 .booklist .thumbnail{
-    min-height: 340px;
+    min-height: 400px;
+}
+
+.icon-bar{      /*改变折叠菜单按钮的颜色*/
+    background-color: #6f9c92;
 }
 
 .clear{
@@ -73,4 +78,8 @@ footer{
 }
 .foot{
 	min-height: 120px;
+}
+
+.hiddenA{
+    display: none;
 }

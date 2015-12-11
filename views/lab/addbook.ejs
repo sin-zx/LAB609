@@ -6,10 +6,18 @@
       <h3>已有分类</h3>
       <hr>
       <ul class="nav nav-pills nav-stacked">
-        <li role="presentation"><a href="#">语言代码</a></li>
-        <li role="presentation"><a href="#">数字电子</a></li>
-        <li role="presentation"><a href="#">算法数据</a></li>
-        <li role="presentation"><a href="#">经典文学</a></li>
+        <%
+          //var tags,user;
+          if(tags==""){ 
+         %>
+              <li role="presentation"><h3>暂无分类</h3></li>
+        <%
+          }else{
+          for(n in tags){
+          
+        %>
+          <li role="presentation"><a href="/books?tag=<%=tags[n].tag %>"><%=tags[n].tag %></a></li>
+        <%  }}  %>
       </ul>
     </div>
     <div class="col-md-10"> <!-- 图书列表 -->
